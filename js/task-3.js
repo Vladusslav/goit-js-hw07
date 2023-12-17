@@ -1,29 +1,11 @@
-class StringBuilder {
-  #value;
+const textInput = document.querySelector('#name-input');
+const output = document.querySelector('#name-output');
 
-  constructor(initialValue) {
-    this.#value = initialValue;
+textInput.addEventListener('input', () => {
+  const nameInput = textInput.value.trim();
+  if (nameInput === '') {
+    output.textContent = 'Anonymous';
+  } else {
+    output.textContent = nameInput;
   }
-
-  getValue() {
-    return this.#value;
-  }
-  padStart(str) {
-    this.#value = `${str}` + `${this.#value}`;
-  }
-  padEnd(str) {
-    this.#value = `${this.#value}` + `${str}`;
-  }
-  padBoth(str) {
-    this.#value = `${str}` + `${this.#value}` + `${str}`;
-  }
-}
-
-const builder = new StringBuilder('.');
-console.log(builder.getValue()); // "."
-builder.padStart('^');
-console.log(builder.getValue()); // "^."
-builder.padEnd('^');
-console.log(builder.getValue()); // "^.^"
-builder.padBoth('=');
-console.log(builder.getValue()); // "=^.^="
+});
